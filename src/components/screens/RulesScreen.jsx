@@ -97,7 +97,7 @@ function RulesScreen() {
               🔄 Mécanisme "Passer"
             </h2>
             <p className="text-lg leading-relaxed">
-              Si vous bloquez sur un mot, vous pouvez le <strong>passer</strong> en échange d'une pénalité de temps (configurable de 0 à 10 secondes dans les options). Le mot passé retourne dans le pot et pourra être re-tiré plus tard.
+              Vous pouvez <strong>passer un mot</strong> si vous bloquez dessus, mais cela vous coûte du temps ! La pénalité (configurable de 0 à 10 secondes) est déduite de votre temps restant. Les mots passés apparaissent en rouge à la fin du tour et peuvent être validés ou invalidés.
             </p>
           </section>
 

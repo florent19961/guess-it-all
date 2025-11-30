@@ -30,11 +30,6 @@ function ResultsScreen() {
     actions.goToScreen('home');
   };
 
-  const getTeamColor = (index) => {
-    const colors = ['team-1', 'team-2', 'team-3', 'team-4'];
-    return colors[sortedTeams.findIndex(t => t.id === teams[index].id)] || 'team-1';
-  };
-
   return (
     <div className="min-h-screen bg-background-main relative overflow-hidden">
       {/* Effet étoiles filantes en arrière-plan */}

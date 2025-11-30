@@ -11,36 +11,34 @@ Toutes les fonctionnalités du cahier des charges ont été implémentées avec 
 - **Total de fichiers créés** : 30+
 - **Lignes de code** : ~8000+
 - **Composants React** : 22
-- **Écrans** : 12
-- **Catégories de mots** : 10+ (Films, Pays, Animaux, Pokémon, Clash Royale, etc.)
-- **Mots dans la base** : 1500+
+- **Écrans** : 13
+- **Catégories de mots** : 10+
 - **Technologies** : React 18, Vite, Tailwind CSS, Lucide React
 
 ## 🎯 Fonctionnalités implémentées
 
 ### ✅ Configuration (100%)
-- [x] Paramètres de base (équipes, joueurs, mode de mots)
-- [x] Options avancées (durée, pénalité passer, mots par joueur)
-- [x] 10+ catégories de mots sélectionnables (Films, Pays, Animaux, Pokémon, Clash Royale, etc.)
+- [x] Paramètres de base (équipes, joueurs, mots)
+- [x] Options avancées (durée, passer, mots par joueur)
 - [x] Validation en temps réel
-- [x] Réactivité dynamique selon paramètres
+- [x] Réactivité dynamique (encadrés selon paramètres)
 
 ### ✅ Préparation (100%)
 - [x] Saisie des noms avec validation de doublons
-- [x] Choix des mots (manuel ou aléatoire selon catégories)
-- [x] Génération aléatoire de mots depuis 1500+ mots (10+ catégories)
-- [x] Constitution des équipes automatique avec drag & drop pour modifier
+- [x] Choix des mots (manuel ou aléatoire par catégories)
+- [x] Génération aléatoire de mots depuis 10+ catégories thématiques
+- [x] Constitution des équipes (aléatoire avec drag & drop)
 - [x] Édition des noms d'équipes
 
 ### ✅ Gameplay (100%)
 - [x] 3 manches avec modes différents
-- [x] Ordre de jeu aléatoire persistant
+- [x] Ordre de jeu aléatoire persistant sur les 3 manches
 - [x] Chronomètre fonctionnel avec useTimer hook
-- [x] Mécanisme "Passer" avec pénalité de temps configurable (0-10s)
+- [x] Système de pénalité pour passer un mot (0-10s configurable)
 - [x] Validation "Mot deviné"
 - [x] Gestion du pool de mots (formule absolue respectée)
-- [x] Compteur "Mots restants"
-- [x] Vérification après chaque tour (toggle réversible)
+- [x] Compteur "Mots restants" en temps réel
+- [x] Vérification après chaque tour (toggle validé/invalidé)
 - [x] Invalidation de mots (remise dans le pool)
 - [x] Transition entre manches
 - [x] Continuité inter-manches (même joueur, temps bonus)
@@ -68,17 +66,17 @@ Toutes les fonctionnalités du cahier des charges ont été implémentées avec 
 
 ## 🔍 Points critiques vérifiés
 
-### ✅ Réactivité des encadrés (CLAUDE.md point critique #1)
-- Le nombre d'encadrés dans PlayersScreen varie dynamiquement selon `numberOfPlayers`
-- Le dénominateur [X/Y] se met à jour selon `wordsPerPlayer`
+### ✅ Réactivité des lignes joueurs
+- Le nombre de lignes dans PlayersScreen varie dynamiquement selon `numberOfPlayers`
+- Les boutons affichent "Choisir les mots" ou "Mots remplis" selon l'état
 - Testé : Changement de 6 à 10 joueurs, changement de 7 à 10 mots/joueur
 
-### ✅ Compteur "Mots restants" (CLAUDE.md point critique #2)
+### ✅ Compteur "Mots restants"
 - Formule : `Mots restants = remainingWords.length`
-- Le mot courant ET le mot suivant sont INCLUS dans `remainingWords`
-- Affichage : `{remainingWords.length}` directement (pas de soustraction)
+- Affichage en temps réel pendant le tour de jeu
+- Se met à jour instantanément après validation ou passage d'un mot
 
-### ✅ Conservation du nombre total de mots (CLAUDE.md point critique #3)
+### ✅ Conservation du nombre total de mots
 - Formule ABSOLUE respectée : `Total = numberOfPlayers × wordsPerPlayer`
 - Validation au démarrage du jeu
 - Validation au début de chaque manche
@@ -104,16 +102,16 @@ npm run preview
 ```
 src/
 ├── components/
-│   ├── screens/        # 12 écrans du jeu
-│   ├── ui/             # 7 composants réutilisables
+│   ├── screens/        # 13 écrans du jeu
+│   ├── ui/             # 8 composants réutilisables
 │   └── game/           # Composants spécifiques
 ├── context/
 │   └── GameContext.jsx # État global + 20+ actions
 ├── hooks/
 │   └── useTimer.js     # Hook chronomètre
 ├── utils/
-│   ├── wordDatabase.js # Base de mots
-│   └── wordCategories.js # 10+ catégories (1500+ mots)
+│   ├── wordDatabase.js # Utilitaires de génération
+│   └── wordCategories.js # 10+ catégories thématiques
 ├── App.jsx
 ├── main.jsx
 └── index.css

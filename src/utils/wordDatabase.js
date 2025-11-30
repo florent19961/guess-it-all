@@ -268,20 +268,3 @@ export const generateRandomWords = (count, excludeWords = [], selectedCategories
   const shuffled = [...availableWords].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, count);
 };
-
-/**
- * Vérifie si un mot existe dans la base de données
- * @param {string} word - Mot à vérifier
- * @returns {boolean} True si le mot existe
- */
-export const wordExists = (word) => {
-  return wordDatabase.includes(word);
-};
-
-/**
- * Retourne le nombre total de mots dans la base
- * @returns {number} Nombre de mots
- */
-export const getTotalWordsCount = () => {
-  return wordDatabase.length;
-};

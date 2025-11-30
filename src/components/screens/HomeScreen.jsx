@@ -101,46 +101,17 @@ function HomeScreen() {
         </p>
       </main>
 
-      {/* Popup de confirmation de réinitialisation */}
+      {/* Popup de confirmation de nouvelle partie */}
       <Modal isOpen={showResetConfirmation} onClose={handleCancelReset}>
         <div className="space-y-6">
           {/* Titre */}
           <h2 className="font-bangers text-4xl text-white text-center drop-shadow-[2px_2px_0_#e88b8b]">
-            ⚠️ Réinitialisation complète
+            Nouvelle partie
           </h2>
 
           {/* Message principal */}
           <p className="font-poppins text-lg text-white text-center">
-            Cette action supprimera TOUTES les données suivantes :
-          </p>
-
-          {/* Liste des éléments supprimés */}
-          <div className="bg-background-card/50 rounded-xl p-6 space-y-3">
-            <div className="flex items-start gap-3">
-              <span className="text-error-red text-xl">❌</span>
-              <p className="font-poppins text-white">Tous les joueurs et leurs noms</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-error-red text-xl">❌</span>
-              <p className="font-poppins text-white">Tous les mots saisis par les joueurs</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-error-red text-xl">❌</span>
-              <p className="font-poppins text-white">Les équipes constituées et leurs noms personnalisés</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-error-red text-xl">❌</span>
-              <p className="font-poppins text-white">Tous les scores et l'historique de la partie</p>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-error-red text-xl">❌</span>
-              <p className="font-poppins text-white">Tous les paramètres personnalisés</p>
-            </div>
-          </div>
-
-          {/* Avertissement */}
-          <p className="font-poppins text-warning-yellow text-center font-semibold">
-            Cette action est irréversible.
+            Lancer une nouvelle partie supprimera la sauvegarde de la partie en cours.
           </p>
 
           {/* Boutons */}
@@ -153,10 +124,11 @@ function HomeScreen() {
               Annuler
             </Button>
             <Button
+              variant="primary"
               onClick={handleConfirmReset}
-              className="flex-1 bg-error-red hover:bg-error-red/80"
+              className="flex-1"
             >
-              Réinitialiser
+              Nouvelle partie
             </Button>
           </div>
         </div>

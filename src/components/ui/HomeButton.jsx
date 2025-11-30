@@ -57,39 +57,13 @@ function HomeButton() {
         <div className="space-y-6">
           {/* Titre */}
           <h2 className="font-bangers text-4xl text-white text-center drop-shadow-[2px_2px_0_#e88b8b]">
-            ⏸️ Interrompre la partie ?
+            Interrompre la partie
           </h2>
 
           {/* Message principal */}
-          <div className="bg-background-card/50 rounded-xl p-6 space-y-4">
-            <p className="font-poppins text-lg text-white text-center">
-              La partie sera mise en pause et sauvegardée automatiquement.
-            </p>
-            <p className="font-poppins text-secondary-cyan text-center font-semibold">
-              Vous pourrez reprendre exactement où vous en étiez depuis l'écran d'accueil.
-            </p>
-          </div>
-
-          {/* Informations sauvegardées */}
-          <div className="bg-background-card/50 rounded-xl p-4">
-            <p className="font-poppins text-sm text-gray-400 text-center mb-3">
-              Seront conservés :
-            </p>
-            <div className="space-y-2">
-              <div className="flex items-center justify-center gap-2">
-                <span className="text-success-green text-lg">✓</span>
-                <p className="font-poppins text-white text-sm">Progression et scores</p>
-              </div>
-              <div className="flex items-center justify-center gap-2">
-                <span className="text-success-green text-lg">✓</span>
-                <p className="font-poppins text-white text-sm">Temps restant</p>
-              </div>
-              <div className="flex items-center justify-center gap-2">
-                <span className="text-success-green text-lg">✓</span>
-                <p className="font-poppins text-white text-sm">Mots restants</p>
-              </div>
-            </div>
-          </div>
+          <p className="font-poppins text-lg text-white text-center">
+            La partie sera mise en pause et sauvegardée automatiquement.
+          </p>
 
           {/* Boutons */}
           <div className="flex gap-4">
@@ -98,14 +72,14 @@ function HomeButton() {
               onClick={handleCancelSuspend}
               className="flex-1"
             >
-              Continuer à jouer
+              Annuler
             </Button>
             <Button
               variant="secondary"
               onClick={handleConfirmSuspend}
               className="flex-1"
             >
-              Mettre en pause
+              Accueil
             </Button>
           </div>
         </div>

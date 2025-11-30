@@ -38,19 +38,12 @@ L'objectif est de faire deviner un maximum de mots à son équipe dans le temps 
 - Clic sur "JOUER" : Affiche l'écran de configuration
 
 - Clic sur "NOUVELLE PARTIE" (si une partie est en cours) :
-  - Affiche une popup de confirmation graphique
-  - Titre : "⚠️ Réinitialisation complète" (police Bangers, ombre rouge)
-  - Message : "Cette action supprimera TOUTES les données suivantes :"
-  - Liste avec puces rouges (❌) :
-    - Tous les joueurs et leurs noms
-    - Tous les mots saisis par les joueurs
-    - Les équipes constituées et leurs noms personnalisés
-    - Tous les scores et l'historique de la partie
-    - Tous les paramètres personnalisés
-  - Avertissement : "Cette action est irréversible." (jaune, gras)
+  - Affiche une popup de confirmation simple
+  - Titre : "Nouvelle partie" (police Bangers, ombre rouge)
+  - Message : "Lancer une nouvelle partie supprimera la sauvegarde de la partie en cours."
   - Deux boutons :
     - "Annuler" (gris) : Ferme la popup, reste sur l'écran d'accueil
-    - "Réinitialiser" (rouge vif) : Confirme l'action, supprime toutes les données et affiche l'écran de configuration
+    - "Nouvelle partie" (rose saumon) : Confirme l'action, supprime toutes les données et affiche l'écran de configuration
 
 - Clic sur "REPRENDRE LA PARTIE" : Retourne à l'écran où la partie a été suspendue
 - Clic sur "RÈGLES" : Affiche l'écran des règles du jeu
@@ -151,19 +144,12 @@ L'objectif est de faire deviner un maximum de mots à son équipe dans le temps 
 - Si 0 catégorie (impossible à sauvegarder) : Fallback sur base générique de 1000+ mots
 
 **Bouton "Réinitialiser"** :
-- Au clic, affiche une popup de confirmation graphique stylisée (pas un message d'alerte système)
-- Titre de la popup : "⚠️ Réinitialisation complète" (police Bangers, ombre rouge)
-- Message : "Cette action supprimera TOUTES les données suivantes :"
-- Liste affichée avec puces rouges (❌) dans un encadré avec fond semi-transparent :
-  - Tous les joueurs et leurs noms
-  - Tous les mots saisis par les joueurs
-  - Les équipes constituées et leurs noms personnalisés
-  - Tous les scores et l'historique de la partie
-  - Tous les paramètres personnalisés
-- Avertissement : "Cette action est irréversible." (jaune, gras)
+- Au clic, affiche une popup de confirmation simple
+- Titre de la popup : "Réinitialisation des paramètres" (police Bangers, ombre rouge)
+- Pas de message explicatif
 - Deux boutons :
   - "Annuler" (gris) : Ferme la popup, aucun changement
-  - "Réinitialiser" (rouge vif) : Confirme l'action
+  - "Valider" (rose saumon) : Confirme l'action
 
 **Si confirmation de la réinitialisation** :
 - Tous les paramètres reviennent aux valeurs par défaut
@@ -178,15 +164,15 @@ L'objectif est de faire deviner un maximum de mots à son équipe dans le temps 
 **Interface** :
 - Titre "Qui joue ?" en haut (police Bangers, blanc avec ombre rouge)
 - Flèche de retour en haut à gauche
-- Liste verticale de lignes (une par joueur)
+- Liste verticale de lignes simples (une par joueur, sans encadré)
 - Nombre de lignes = Nombre de joueurs configuré
 - Bouton "Constitution des équipes" en bas (rose saumon, grande taille)
 - Message d'aide en bas si pas tous les joueurs prêts
 - Effet d'étoiles filantes en arrière-plan
 
-**Chaque ligne de joueur contient** :
+**Chaque ligne de joueur contient** (disposition horizontale simple, sans encadré) :
 - Champ de saisie du nom à gauche (placeholder "Joueur 1", "Joueur 2", etc.)
-- Bouton cliquable à droite affichant :
+- Bouton cliquable à droite (min-width 140px) affichant :
   - "Choisir les mots" (bordure rouge + fond rouge semi-transparent + texte rouge) si les mots ne sont pas tous saisis
   - "Mots remplis" (bordure verte + fond vert semi-transparent + texte vert) si tous les mots sont saisis
 
@@ -235,13 +221,13 @@ L'objectif est de faire deviner un maximum de mots à son équipe dans le temps 
 - Flèche de retour en haut à gauche
 - Icône poubelle rouge en haut à droite (effacer tous les mots)
 - Indicateur de progression en gros : "X/Y" (X = mots remplis, Y = total requis) en turquoise
-- Liste verticale de lignes (une par mot à saisir)
+- Liste verticale de lignes simples (une par mot à saisir, sans encadré)
 - Bouton "Grosse flemme" en bas à gauche (turquoise)
 - Bouton "Enregistrer les mots" en bas à droite (rose saumon, grande taille)
 - Message d'aide en bas si pas tous les mots remplis
 - Effet d'étoiles filantes en arrière-plan
 
-**Chaque ligne de mot contient** :
+**Chaque ligne de mot contient** (disposition horizontale simple, sans encadré) :
 - Input texte à gauche avec placeholder "Mot 1", "Mot 2", etc.
 - Icône de dé à droite (bouton turquoise rond)
 - Si doublon détecté : Bordure rouge + message "Doublon"
@@ -287,10 +273,12 @@ L'objectif est de faire deviner un maximum de mots à son équipe dans le temps 
 - Bouton "Démarrer la partie" en bas (rose saumon, grande taille)
 - Message d'aide en bas si conditions non remplies
 - Effet d'étoiles filantes en arrière-plan
+- **Pas de section "Joueurs disponibles"** : tous les joueurs sont toujours dans une équipe
 
 **Répartition initiale** :
 - À l'arrivée sur cet écran, tous les joueurs sont automatiquement répartis de manière aléatoire entre les équipes
 - Répartition équitable : chaque équipe reçoit approximativement le même nombre de joueurs
+- Seuls les joueurs ayant un nom valide sont inclus dans la répartition
 
 **Cartes d'équipes** :
 - Bordure de couleur selon l'équipe (rose, turquoise, violet, jaune)
@@ -305,7 +293,9 @@ L'objectif est de faire deviner un maximum de mots à son équipe dans le temps 
   - Icône de poignée (:::) à gauche indiquant qu'il est déplaçable
   - Nom du joueur
   - Bordure gauche colorée selon la couleur de l'équipe
+  - **Pas de bouton X** pour retirer le joueur (le joueur reste toujours dans une équipe)
 - Si moins de 2 joueurs : Message d'avertissement rouge "⚠ Minimum 2 joueurs requis"
+- **Pas de compteur de joueurs** ni de message "Équipe valide"
 
 **Système de glisser-déposer** :
 - Tous les joueurs peuvent être déplacés par glisser-déposer **uniquement entre les équipes**
@@ -506,17 +496,12 @@ L'objectif est de faire deviner un maximum de mots à son équipe dans le temps 
   - Si annulé : Retour au jeu, chronomètre continue
 
 - **Clic sur l'icône maison** :
-  - Affiche une popup de confirmation graphique stylisée
-  - Titre : "⏸️ Interrompre la partie ?" (police Bangers, ombre rouge)
-  - Message principal : "La partie sera mise en pause et sauvegardée automatiquement."
-  - Sous-message turquoise : "Vous pourrez reprendre exactement où vous en étiez depuis l'écran d'accueil."
-  - Encadré avec liste des éléments conservés (coches vertes ✓) :
-    - Progression et scores
-    - Temps restant
-    - Mots restants
+  - Affiche une popup de confirmation simple
+  - Titre : "Interrompre la partie" (police Bangers, ombre rouge)
+  - Message : "La partie sera mise en pause et sauvegardée automatiquement."
   - Deux boutons :
-    - "Continuer à jouer" (gris) : Ferme la popup, reste dans le jeu
-    - "Mettre en pause" (turquoise) : Confirme l'action
+    - "Annuler" (gris) : Ferme la popup, reste dans le jeu
+    - "Accueil" (turquoise) : Confirme l'action
   - Si confirmé :
     - Suspend la partie
     - Sauvegarde l'état actuel complet (temps restant, mot en cours, scores, etc.)
@@ -771,7 +756,7 @@ L'objectif est de faire deviner un maximum de mots à son équipe pour marquer l
    - Les joueurs configurent les paramètres (nombre d'équipes, nombre de joueurs, etc.)
    - Chaque joueur saisit son nom
    - Chaque joueur saisit ses mots (nombre configurable, par défaut 7)
-   - Les équipes sont constituées (aléatoirement ou manuellement)
+   - Les équipes sont constituées aléatoirement, puis ajustables par glisser-déposer
 
 2. **Constitution du pool de mots** :
    - Tous les mots saisis par tous les joueurs sont regroupés dans un pool unique

@@ -31,10 +31,13 @@ function TeamsScreen() {
     }
   }, []);
 
+  // Ne considérer que les joueurs avec un nom
+  const playersWithNames = players.filter(p => p.name && p.name.trim());
+
   // Vérifier si tous les joueurs sont assignés et min 2 par équipe
   const allTeamsValid = teams.every(team => team.playerIds.length >= 2);
   const totalAssigned = teams.reduce((sum, team) => sum + team.playerIds.length, 0);
-  const allAssigned = totalAssigned === players.length;
+  const allAssigned = totalAssigned === playersWithNames.length;
   const canStart = allAssigned && allTeamsValid;
 
   const handleBack = () => {
@@ -99,11 +102,6 @@ function TeamsScreen() {
     }
     setDraggedPlayer(null);
     setDropTarget(null);
-  };
-
-  const getTeamColor = (index) => {
-    const colors = ['team-1', 'team-2', 'team-3', 'team-4'];
-    return colors[index] || 'team-1';
   };
 
   const getTeamTextColorClass = (index) => {

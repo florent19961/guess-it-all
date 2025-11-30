@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { generateRandomWords } from '../utils/wordDatabase';
 
 const GameContext = createContext();
 
@@ -115,13 +114,6 @@ export const GameProvider = ({ children }) => {
     }));
   };
 
-  const resetSettings = () => {
-    setState(prev => ({
-      ...prev,
-      settings: getInitialState().settings,
-    }));
-  };
-
   /**
    * ACTIONS - JOUEURS
    */
@@ -175,6 +167,13 @@ export const GameProvider = ({ children }) => {
     setState(prev => ({
       ...prev,
       players: prev.players.filter(p => p.id !== playerId),
+    }));
+  };
+
+  const cleanupEmptyPlayers = () => {
+    setState(prev => ({
+      ...prev,
+      players: prev.players.filter(p => p.name && p.name.trim()),
     }));
   };
 
@@ -235,7 +234,9 @@ export const GameProvider = ({ children }) => {
 
   const randomizeTeams = () => {
     const { numberOfTeams } = state.settings;
-    const shuffledPlayers = [...state.players].sort(() => Math.random() - 0.5);
+    // Ne prendre que les joueurs qui ont un nom non vide
+    const playersWithNames = state.players.filter(p => p.name && p.name.trim());
+    const shuffledPlayers = [...playersWithNames].sort(() => Math.random() - 0.5);
 
     setState(prev => {
       const teams = prev.teams.map((team, index) => ({
@@ -606,29 +607,6 @@ export const GameProvider = ({ children }) => {
     });
   };
 
-  const endGame = () => {
-    setState(prev => ({
-      ...prev,
-      game: {
-        ...prev.game,
-        currentScreen: 'results',
-      },
-    }));
-  };
-
-  /**
-   * Met à jour le temps restant dans le contexte (synchronisation avec le timer)
-   */
-  const updateTimeRemaining = (seconds) => {
-    setState(prev => ({
-      ...prev,
-      game: {
-        ...prev.game,
-        timeRemaining: seconds,
-      },
-    }));
-  };
-
   /**
    * ACTIONS - NAVIGATION
    */
@@ -691,34 +669,6 @@ export const GameProvider = ({ children }) => {
     });
   };
 
-  /**
-   * ACTIONS - PERSISTANCE
-   */
-
-  const saveToLocalStorage = () => {
-    try {
-      localStorage.setItem('guessItAll_gameState', JSON.stringify(state));
-      return { success: true };
-    } catch (error) {
-      console.error('Erreur lors de la sauvegarde:', error);
-      return { error: error.message };
-    }
-  };
-
-  const loadFromLocalStorage = () => {
-    try {
-      const saved = localStorage.getItem('guessItAll_gameState');
-      if (saved) {
-        setState(JSON.parse(saved));
-        return { success: true };
-      }
-      return { error: 'Aucune sauvegarde trouvée' };
-    } catch (error) {
-      console.error('Erreur lors du chargement:', error);
-      return { error: error.message };
-    }
-  };
-
   const clearLocalStorage = () => {
     try {
       localStorage.removeItem('guessItAll_gameState');
@@ -756,13 +706,13 @@ export const GameProvider = ({ children }) => {
     actions: {
       // Paramètres
       updateSettings,
-      resetSettings,
 
       // Joueurs
       addPlayer,
       updatePlayer,
       updatePlayerWords,
       removePlayer,
+      cleanupEmptyPlayers,
 
       // Équipes
       createTeams,
@@ -778,8 +728,6 @@ export const GameProvider = ({ children }) => {
       endTurn,
       validateWords,
       nextRound,
-      endGame,
-      updateTimeRemaining,
 
       // Navigation
       goToScreen,
@@ -787,8 +735,6 @@ export const GameProvider = ({ children }) => {
       resumeGame,
 
       // Persistance
-      saveToLocalStorage,
-      loadFromLocalStorage,
       clearLocalStorage,
 
       // Reset

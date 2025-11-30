@@ -185,6 +185,8 @@ function PlayersScreen() {
 
   const handleNext = () => {
     if (allPlayersReady) {
+      // Nettoyer les joueurs sans nom avant de créer les équipes
+      actions.cleanupEmptyPlayers();
       // Créer les équipes
       actions.createTeams();
       actions.goToScreen('teams');

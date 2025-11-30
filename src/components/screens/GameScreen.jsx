@@ -28,11 +28,6 @@ function GameScreen() {
     }
   };
 
-  const getTeamColor = (index) => {
-    const colors = ['team-1', 'team-2', 'team-3', 'team-4'];
-    return colors[index] || 'team-1';
-  };
-
   const getTeamTextColorClass = (index) => {
     const colors = ['text-[#f19b9b]', 'text-[#7dd3c0]', 'text-[#a78bfa]', 'text-[#fbbf24]'];
     return colors[index] || 'text-[#f19b9b]';

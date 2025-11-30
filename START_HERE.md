@@ -43,11 +43,11 @@ Ouvrez votre navigateur et amusez-vous ! 🎉
 ## 🎮 Fonctionnalités
 
 - ✅ **Configuration complète** : 2-4 équipes, 4-20 joueurs, paramètres avancés
-- ✅ **10+ catégories de mots** (Films, Pays, Animaux, Pokémon, Clash Royale, etc.)
-- ✅ **1500+ mots** dans la base de données
+- ✅ **10+ catégories de mots** (Films, Animaux, Pokémon, Clash Royale...)
 - ✅ **3 manches** avec modes différents (Description / Un mot / Mime)
 - ✅ **Chronomètre** avec temps personnalisable (20-60s)
-- ✅ **Mécanisme "Passer"** avec pénalité de temps configurable (0-10s)
+- ✅ **Système de pénalité** pour passer un mot (0-10s)
+- ✅ **Drag & drop** pour la constitution des équipes
 - ✅ **Sauvegarde automatique** (LocalStorage)
 - ✅ **Design moderne** avec animations d'étoiles filantes
 - ✅ **100% responsive** (mobile, tablet, desktop)
@@ -64,11 +64,11 @@ Ouvrez votre navigateur et amusez-vous ! 🎉
 
 ### Statistiques du code
 
-- **24 fichiers** JS/JSX
+- **25+ fichiers** JS/JSX
 - **12 écrans** de jeu
 - **7 composants** UI réutilisables
 - **~8000+ lignes** de code
-- **1500+ mots** dans la base (10+ catégories)
+- **10+ catégories** de mots thématiques
 
 ---
 
@@ -86,8 +86,8 @@ guess-it-all/
 │   ├── hooks/
 │   │   └── useTimer.js     # Hook personnalisé pour le chronomètre
 │   ├── utils/
-│   │   ├── wordDatabase.js # Base de mots legacy
-│   │   └── wordCategories.js # 1500+ mots (10+ catégories)
+│   │   ├── wordDatabase.js # Utilitaires de génération
+│   │   └── wordCategories.js # 10+ catégories thématiques
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── index.css           # Styles globaux + animations
@@ -103,9 +103,9 @@ guess-it-all/
 
 ## 🎯 Règles du jeu (Rappel)
 
-1. **Configuration** : Paramétrez la partie (équipes, joueurs, mots)
-2. **Préparation** : Chaque joueur entre son nom et choisit ses mots
-3. **Formation** : Répartissez les joueurs en équipes
+1. **Configuration** : Paramétrez la partie (équipes, joueurs, catégories de mots)
+2. **Préparation** : Chaque joueur entre son nom et choisit ses mots (ou génération automatique)
+3. **Formation** : Les équipes sont formées aléatoirement (ajustables par drag & drop)
 4. **Jeu** : 3 manches avec des modes différents
    - Manche 1 : Description verbale (illimité)
    - Manche 2 : Un seul mot

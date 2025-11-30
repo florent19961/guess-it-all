@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useGame } from '../../context/GameContext';
-import Button from '../ui/Button';
 import HomeButton from '../ui/HomeButton';
 import useTimer from '../../hooks/useTimer';
 import { Check, FastForward, Pause, Play } from 'lucide-react';
