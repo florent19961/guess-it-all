@@ -43,10 +43,11 @@ Ouvrez votre navigateur et amusez-vous ! 🎉
 ## 🎮 Fonctionnalités
 
 - ✅ **Configuration complète** : 2-4 équipes, 4-20 joueurs, paramètres avancés
-- ✅ **800+ mots** dans la base de données
+- ✅ **10+ catégories de mots** (Films, Pays, Animaux, Pokémon, Clash Royale, etc.)
+- ✅ **1500+ mots** dans la base de données
 - ✅ **3 manches** avec modes différents (Description / Un mot / Mime)
 - ✅ **Chronomètre** avec temps personnalisable (20-60s)
-- ✅ **Mécanisme "Passer"** (jongler entre 2 mots)
+- ✅ **Mécanisme "Passer"** avec pénalité de temps configurable (0-10s)
 - ✅ **Sauvegarde automatique** (LocalStorage)
 - ✅ **Design moderne** avec animations d'étoiles filantes
 - ✅ **100% responsive** (mobile, tablet, desktop)
@@ -67,7 +68,7 @@ Ouvrez votre navigateur et amusez-vous ! 🎉
 - **12 écrans** de jeu
 - **7 composants** UI réutilisables
 - **~8000+ lignes** de code
-- **800+ mots** dans la base
+- **1500+ mots** dans la base (10+ catégories)
 
 ---
 
@@ -85,7 +86,8 @@ guess-it-all/
 │   ├── hooks/
 │   │   └── useTimer.js     # Hook personnalisé pour le chronomètre
 │   ├── utils/
-│   │   └── wordDatabase.js # 800+ mots pour le jeu
+│   │   ├── wordDatabase.js # Base de mots legacy
+│   │   └── wordCategories.js # 1500+ mots (10+ catégories)
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── index.css           # Styles globaux + animations

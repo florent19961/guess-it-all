@@ -12,33 +12,35 @@ Toutes les fonctionnalités du cahier des charges ont été implémentées avec 
 - **Lignes de code** : ~8000+
 - **Composants React** : 22
 - **Écrans** : 12
-- **Mots dans la base** : 800+
+- **Catégories de mots** : 10+ (Films, Pays, Animaux, Pokémon, Clash Royale, etc.)
+- **Mots dans la base** : 1500+
 - **Technologies** : React 18, Vite, Tailwind CSS, Lucide React
 
 ## 🎯 Fonctionnalités implémentées
 
 ### ✅ Configuration (100%)
-- [x] Paramètres de base (équipes, joueurs, mots)
-- [x] Options avancées (durée, passer, mots par joueur)
+- [x] Paramètres de base (équipes, joueurs, mode de mots)
+- [x] Options avancées (durée, pénalité passer, mots par joueur)
+- [x] 10+ catégories de mots sélectionnables (Films, Pays, Animaux, Pokémon, Clash Royale, etc.)
 - [x] Validation en temps réel
-- [x] Réactivité dynamique (encadrés selon paramètres)
+- [x] Réactivité dynamique selon paramètres
 
 ### ✅ Préparation (100%)
 - [x] Saisie des noms avec validation de doublons
-- [x] Choix des mots (manuel ou aléatoire)
-- [x] Génération aléatoire de mots depuis base de 800+ mots
-- [x] Constitution des équipes (manuelle ou aléatoire)
+- [x] Choix des mots (manuel ou aléatoire selon catégories)
+- [x] Génération aléatoire de mots depuis 1500+ mots (10+ catégories)
+- [x] Constitution des équipes automatique avec drag & drop pour modifier
 - [x] Édition des noms d'équipes
 
 ### ✅ Gameplay (100%)
 - [x] 3 manches avec modes différents
-- [x] Ordre de jeu correct (J1 Eq1 → J1 Eq2 → J2 Eq1...)
+- [x] Ordre de jeu aléatoire persistant
 - [x] Chronomètre fonctionnel avec useTimer hook
-- [x] Mécanisme "Passer" (jongler entre 2 mots)
+- [x] Mécanisme "Passer" avec pénalité de temps configurable (0-10s)
 - [x] Validation "Mot deviné"
 - [x] Gestion du pool de mots (formule absolue respectée)
-- [x] Compteur "Mots restants" (inclut mot courant ET suivant)
-- [x] Vérification après chaque tour
+- [x] Compteur "Mots restants"
+- [x] Vérification après chaque tour (toggle réversible)
 - [x] Invalidation de mots (remise dans le pool)
 - [x] Transition entre manches
 - [x] Continuité inter-manches (même joueur, temps bonus)
@@ -110,7 +112,8 @@ src/
 ├── hooks/
 │   └── useTimer.js     # Hook chronomètre
 ├── utils/
-│   └── wordDatabase.js # 800+ mots
+│   ├── wordDatabase.js # Base de mots
+│   └── wordCategories.js # 10+ catégories (1500+ mots)
 ├── App.jsx
 ├── main.jsx
 └── index.css

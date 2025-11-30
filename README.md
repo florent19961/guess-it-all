@@ -56,16 +56,18 @@ npm run preview
 
 - Choisissez le nombre d'équipes (2 à 4)
 - Définissez le nombre de joueurs (4 à 20)
+- Choisissez le mode de mots : Aléatoire ou Personnalisé
 - Personnalisez les paramètres avancés (optionnel) :
   - Nombre de mots par joueur (4 à 10)
   - Durée d'un tour (20 à 60 secondes)
-  - Autorisation de passer un mot
+  - Temps de pénalité pour passer un mot (0 à 10 secondes)
+  - Catégories de mots (Films, Pays, Animaux, Pokémon, Clash Royale, etc.)
 
 ### 2. Préparation
 
 - Chaque joueur entre son nom
-- Chaque joueur choisit ses mots (ou génération aléatoire)
-- Les joueurs sont répartis en équipes (manuellement ou aléatoirement)
+- Chaque joueur choisit ses mots (ou génération aléatoire selon les catégories sélectionnées)
+- Les joueurs sont répartis automatiquement en équipes (modifiable par drag & drop)
 
 ### 3. Partie
 
@@ -121,7 +123,8 @@ guess-it-all/
 │   ├── hooks/
 │   │   └── useTimer.js     # Hook personnalisé pour le chronomètre
 │   ├── utils/
-│   │   └── wordDatabase.js # Base de données de 800+ mots
+│   │   ├── wordDatabase.js # Base de données de mots
+│   │   └── wordCategories.js # 10+ catégories (1500+ mots)
 │   ├── App.jsx             # Point d'entrée principal
 │   ├── main.jsx            # Bootstrap React
 │   └── index.css           # Styles globaux
@@ -157,13 +160,14 @@ L'application est entièrement responsive et optimisée pour :
 
 - ✅ Configuration complète de la partie
 - ✅ Saisie des noms et des mots
-- ✅ Génération aléatoire de mots
-- ✅ Constitution des équipes (manuelle ou aléatoire)
+- ✅ 10+ catégories de mots (Films, Pays, Animaux, Pokémon, Clash Royale, etc.)
+- ✅ Génération aléatoire de mots selon les catégories sélectionnées
+- ✅ Constitution des équipes avec drag & drop
 - ✅ 3 manches avec modes différents
 - ✅ Système de points
 - ✅ Chronomètre avec compte à rebours
-- ✅ Mécanisme "Passer" (optionnel)
-- ✅ Vérification des mots après chaque tour
+- ✅ Mécanisme "Passer" avec pénalité de temps configurable
+- ✅ Vérification des mots après chaque tour (toggle réversible)
 - ✅ Sauvegarde automatique (LocalStorage)
 - ✅ Résultats finaux avec podium
 - ✅ Animations et transitions fluides
