@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Animation étoiles filantes */
+@keyframes shooting-star {
+  0% {
+    transform: translate(-100vw, -100vh) rotate(45deg);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100vw, 100vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shooting-star-delayed {
+  0%, 20% {
+    transform: translate(-100vw, -50vh) rotate(45deg);
+    opacity: 0;
+  }
+  21% {
+    opacity: 1;
+  }
+  91% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100vw, 50vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* Conteneur d'étoiles filantes */
+.stars-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Étoiles individuelles avec positions variées */
+.stars-background::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  box-shadow:
+    100px 200px white,
+    300px 100px white,
+    500px 300px white,
+    150px 400px white,
+    450px 250px white,
+    250px 500px white,
+    350px 150px white,
+    550px 400px white,
+    200px 300px white,
+    400px 200px white,
+    600px 350px white,
+    50px 250px white,
+    700px 150px white,
+    800px 300px white,
+    900px 200px white;
+  animation: shooting-star 12s linear infinite;
+}
+
+.stars-background::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  box-shadow:
+    150px 100px white,
+    350px 200px white,
+    550px 250px white,
+    200px 350px white,
+    500px 150px white,
+    300px 450px white,
+    400px 100px white,
+    600px 350px white,
+    250px 250px white,
+    450px 150px white,
+    650px 300px white,
+    100px 200px white,
+    750px 200px white,
+    850px 250px white,
+    950px 150px white;
+  animation: shooting-star-delayed 15s linear infinite;
+}
+
+/* Animation de pulsation pour chronomètre faible */
+@keyframes pulse-red {
+  0%, 100% {
+    color: #ef4444;
+    transform: scale(1);
+  }
+  50% {
+    color: #dc2626;
+    transform: scale(1.05);
+  }
+}
+
+.pulse-red {
+  animation: pulse-red 1s ease-in-out infinite;
+}
+
+/* Smooth transitions globales */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Empêcher la sélection de texte sur les boutons */
+button {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Scrollbar personnalisée pour les listes */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #7dd3c0;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #5dbfa8;
+}
+
+/* Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #7dd3c0 rgba(30, 41, 59, 0.5);
+}
