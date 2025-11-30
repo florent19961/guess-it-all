@@ -3,7 +3,7 @@ import { useGame } from '../../context/GameContext';
 import Button from '../ui/Button';
 import HomeButton from '../ui/HomeButton';
 import useTimer from '../../hooks/useTimer';
-import { Check, ArrowLeftRight, FastForward, Pause, Play } from 'lucide-react';
+import { Check, FastForward, Pause, Play } from 'lucide-react';
 
 /**
  * Écran 7 : Tour de jeu (écran principal du gameplay)

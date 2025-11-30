@@ -868,37 +868,3 @@ function getNextPlayerWithRotation(currentTurnIndex, teamPlayOrder, playerOrderB
 
   return { nextTurnIndex, nextTeamIndex, nextPlayerIndexInTeam };
 }
-
-/**
- * Calcule le prochain joueur selon l'algorithme (OLD - conservé pour compatibilité)
- * J1 Eq1 → J1 Eq2 → J2 Eq1 → J2 Eq2 → etc.
- */
-function getNextPlayer(currentTeamIndex, currentPlayerIndexInTeam, teams) {
-  const totalTeams = teams.length;
-
-  // Passer à l'équipe suivante
-  let nextTeamIndex = (currentTeamIndex + 1) % totalTeams;
-  let nextPlayerIndexInTeam = currentPlayerIndexInTeam;
-
-  // Si on a fait le tour de toutes les équipes, passer au joueur suivant
-  if (nextTeamIndex === 0) {
-    nextPlayerIndexInTeam = currentPlayerIndexInTeam + 1;
-  }
-
-  // Gérer les équipes déséquilibrées
-  // Si l'équipe actuelle n'a pas ce joueur, continuer
-  while (teams[nextTeamIndex].playerIds.length <= nextPlayerIndexInTeam) {
-    nextTeamIndex = (nextTeamIndex + 1) % totalTeams;
-    if (nextTeamIndex === 0) {
-      nextPlayerIndexInTeam++;
-    }
-
-    // Vérifier qu'on ne boucle pas à l'infini
-    const maxPlayers = Math.max(...teams.map(t => t.playerIds.length));
-    if (nextPlayerIndexInTeam >= maxPlayers) {
-      nextPlayerIndexInTeam = 0;
-    }
-  }
-
-  return { nextTeamIndex, nextPlayerIndexInTeam };
-}

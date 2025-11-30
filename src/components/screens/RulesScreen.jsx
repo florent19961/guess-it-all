@@ -97,7 +97,7 @@ function RulesScreen() {
               🔄 Mécanisme "Passer"
             </h2>
             <p className="text-lg leading-relaxed">
-              Si activé dans les options, vous pouvez <strong>mettre un mot en réserve</strong> si vous bloquez dessus. Vous pouvez alors jongler entre 2 mots. Attention : si le mot en réserve n'est pas deviné, il retourne dans le pot à la fin du tour.
+              Si vous bloquez sur un mot, vous pouvez le <strong>passer</strong> en échange d'une pénalité de temps (configurable de 0 à 10 secondes dans les options). Le mot passé retourne dans le pot et pourra être re-tiré plus tard.
             </p>
           </section>
 
