@@ -540,10 +540,10 @@ setState(prev => ({
          numberOfTeams: 2,
          numberOfPlayers: 6,
          wordChoice: "personnalisé",
-         teamFormation: "aléatoire",
          wordsPerPlayer: 7,
          turnDuration: 30,
-         allowPass: true
+         passPenalty: 5, // Temps de pénalité en secondes pour passer un mot (0-10)
+         selectedCategories: ['films', 'pays', 'animaux'] // Catégories par défaut
        },
        players: [],
        teams: [],
@@ -560,10 +560,10 @@ setState(prev => ({
          history: []
        }
      };
-     
+
      // Vider localStorage
      localStorage.removeItem('guessItAll_gameState');
-     
+
      // Réinitialiser le state
      return initialState;
    };
